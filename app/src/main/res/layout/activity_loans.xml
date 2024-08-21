@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="loan"
+            type="com.khana.loans.models.Loans" />
+
+        <variable
+            name="loanmodel"
+            type="com.khana.loans.viewmodels.LoanViewModel" />
+    </data>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".activities.LoanApplicationActivity">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="@string/loan_application"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="5dp"
+            android:hint="@string/loan_amount">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLoanAmount"
+                android:maxLength="7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="@={loan.loanAmountS}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="5dp"
+            android:hint="@string/loan_duration">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLoanDuration"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLength="5"
+                android:autofillHints="username"
+                android:inputType="numberDecimal"
+                android:text="@={loan.loanDurationS}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->loanmodel.applyLoan(loan)}"
+            android:text="@string/apply_for_loan" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>
